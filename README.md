@@ -1,1 +1,1 @@
-Crtl + click no erro = vai pra linha do erro
+Crtl + click no erro = linha do erro
