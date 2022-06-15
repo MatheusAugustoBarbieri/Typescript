@@ -2,7 +2,10 @@
   "compilerOptions": {
     "outDir": "dist/js",
     "target": "ES6",
-    "noEmitOnError": true
+    // não deixa coverter para js se tiver erro no codigo
+    "noEmitOnError": true,
+    // não deixa atribuir "any" automaticamente
+    "noImplicitAny": true
   },
   "include": ["app/**/*"]
 }
