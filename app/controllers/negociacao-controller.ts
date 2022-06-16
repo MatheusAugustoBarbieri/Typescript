@@ -1,4 +1,5 @@
 import { Negociacao } from "../models/negociacao.js";
+import { Negociacoes } from "../models/negociacoes.js";
 
 // Uma das vantagens do typescript é exibir os metodos e propriedades dos elementos pois ele sabe o tipo
 export class NegociacaoController {
@@ -7,6 +8,8 @@ export class NegociacaoController {
   private inputData: HTMLInputElement;
   private inputQuantidade: HTMLInputElement;
   private inputValor: HTMLInputElement;
+  // posso remover a tipagem pois quando estou atribuindo algo o TS ja identifica o tipo atribuido
+  private negociacoes = new Negociacoes();
 
   constructor() {
     this.inputData = document.querySelector("#data");
@@ -16,7 +19,12 @@ export class NegociacaoController {
   // SEMPRE DEIXAR CLARO O RETORNO DOS METODOS
   adiciona(): void {
     const negociacao = this.criaNegociacao();
-    console.log(negociacao);
+    this.negociacoes.adiciona(negociacao);
+    console.log(this.negociacoes.lista());
+
+    // se nao tivesse readonlyArray isso seria possivel
+    // this.negociacoes.lista().pop()
+
     this.limparFormulario();
   }
   criaNegociacao(): Negociacao {
