@@ -1,0 +1,13 @@
+{
+  "compilerOptions": {
+    "outDir": "dist/js",
+    "target": "ES6",
+    "noEmitOnError": true,
+    "noImplicitAny": true,
+    // remove os comentarios na compilacao
+    "removeComments": true,
+    // faz voce ter que explicitar o valor de retorno onde pode ter o retorno como null
+    "strictNullChecks": true
+  },
+  "include": ["app/**/*"]
+}
