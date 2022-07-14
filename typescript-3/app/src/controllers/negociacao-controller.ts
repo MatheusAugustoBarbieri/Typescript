@@ -46,14 +46,23 @@ export class NegociacaoController {
     this.limparFormulario();
     this.atualizaView();
   }
-
+  // .some() se ele encontra a primeira coisa q é verdade ele retorna true
   public importaDados(): void {
-    this.negociacoesService.obterNegocicoesDoDia().then((res) => {
-      for (let negociacao of res) {
-        this.negociacoes.adiciona(negociacao);
-      }
-      this.negociacoesView.update(this.negociacoes);
-    });
+    this.negociacoesService
+      .obterNegocicoesDoDia()
+      .then((negociacoesDeHoje) => {
+        return negociacoesDeHoje.filter((x) => {
+          return !this.negociacoes
+            .lista()
+            .some((negociacao) => negociacao.ehIgual(x));
+        });
+      })
+      .then((res) => {
+        for (let negociacao of res) {
+          this.negociacoes.adiciona(negociacao);
+        }
+        this.negociacoesView.update(this.negociacoes);
+      });
   }
 
   private ehDiaUtil(data: Date) {

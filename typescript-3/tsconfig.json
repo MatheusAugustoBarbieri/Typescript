@@ -1,4 +1,8 @@
 {
+  // IMportante debugar codigo ts chrome
+  // Colocando o "sourceMap" voce consegue q na pasta dist ele gere arquivos.map que fazem com seu navegador reconheça o arquivo .ts e voce consiga debugar
+  // Abra o termina, aperte crtl+p, digite o nome do componente, coloque um break point e executa o codigo
+  // ARQUIVOS .MAP Não se deve super para produção, coloque no gitignore
   "compilerOptions": {
     "outDir": "app/dist/js",
     "target": "ES6",
@@ -6,7 +10,8 @@
     "noImplicitAny": true,
     "removeComments": true,
     "strictNullChecks": true,
-    "experimentalDecorators": true
+    "experimentalDecorators": true,
+    "sourceMap": true
   },
   "include": ["app/src/**/*"]
 }
